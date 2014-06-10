@@ -28,11 +28,15 @@ Running Tests
 * go to bundle root directory 
 * install dependencies with composer 
 
+```sh
     php composer.phar install --dev
+```
 
 * run phpunit
 
+```sh
     phpunit
+```
 
 Usage
 -----
