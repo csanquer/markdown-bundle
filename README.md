@@ -8,11 +8,21 @@ It use [parsedown](http://parsedown.org/) markdownparser library and syntax high
 Parsed Mardown content can be put in cache using [Doctrine Cache](https://github.com/doctrine/cache).
 
 
-Install
--------
+Requirements
+------------
 
-Install by [Composer](https://getcomposer.org/)
+* PHP >= 5.3.3
+* Twig >= 1.1
+* Symfony >= 2.1
 
-```sh
-php composer.phar require csanquer/parsedown-bundle=~0.1
-```
+Documentation
+------------
+
+For installation and usage refer to [Resources/doc/index.md](https://github.com/csanquer/parsedown-bundle/blob/master/Resources/doc/index.md)
+
+Licensing
+---------
+
+License MIT
+
+* Copyright (C) 2014 Charles Sanquer

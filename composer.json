@@ -17,7 +17,9 @@
         }
     },
     "require": {
+        "php": ">=5.3.3",
         "symfony/framework-bundle": "~2.1",
+        "twig/twig": "~1.1",
         "erusev/parsedown": "~1.0",
         "easybook/geshi": "~1.0",
         "doctrine/cache": "~1.3"
