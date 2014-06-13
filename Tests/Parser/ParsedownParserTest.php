@@ -4,8 +4,9 @@ namespace CSanquer\Bundle\ParsedownBundle\Tests\Parser;
 
 use CSanquer\Bundle\ParsedownBundle\Highlighter\HighlighterInterface;
 use CSanquer\Bundle\ParsedownBundle\Parser\HighlightParsedown;
+use CSanquer\Bundle\ParsedownBundle\Parser\ParsedownParser;
 
-class HighlightParsedownTest extends \PHPUnit_Framework_TestCase
+class ParsedownParserTest extends \PHPUnit_Framework_TestCase
 {
     protected $parser;
 
@@ -18,8 +19,7 @@ class HighlightParsedownTest extends \PHPUnit_Framework_TestCase
                     return "//$language colorized\n".$text;
                 }));
 
-
-        $this->parser = new HighlightParsedown($highlighter);
+        $this->parser = new ParsedownParser(new HighlightParsedown($highlighter));
     }
 
     public function testText()
@@ -49,6 +49,6 @@ phpinfo();
 HTML
         ;
 
-        $this->assertEquals($html, $this->parser->text($markdown));
+        $this->assertEquals($html, $this->parser->transform($markdown));
     }
 }

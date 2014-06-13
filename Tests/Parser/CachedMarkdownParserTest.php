@@ -4,10 +4,15 @@ namespace CSanquer\Bundle\ParsedownBundle\Tests\Parser;
 
 use CSanquer\Bundle\ParsedownBundle\Highlighter\HighlighterInterface;
 use CSanquer\Bundle\ParsedownBundle\Parser\HighlightParsedown;
+use CSanquer\Bundle\ParsedownBundle\Parser\ParsedownParser;
+use CSanquer\Bundle\ParsedownBundle\Parser\CachedMarkdownParser;
+use Doctrine\Common\Cache\ArrayCache;
 
-class HighlightParsedownTest extends \PHPUnit_Framework_TestCase
+class CachedMarkdownParserTest extends \PHPUnit_Framework_TestCase
 {
     protected $parser;
+    
+    protected $cache;
 
     protected function setUp()
     {
@@ -19,7 +24,9 @@ class HighlightParsedownTest extends \PHPUnit_Framework_TestCase
                 }));
 
 
-        $this->parser = new HighlightParsedown($highlighter);
+        $this->cache = new ArrayCache();
+
+        $this->parser = new CachedMarkdownParser(new ParsedownParser(new HighlightParsedown($highlighter)), $this->cache, 0, 'test_markdown.');
     }
 
     public function testText()
@@ -49,6 +56,10 @@ phpinfo();
 HTML
         ;
 
-        $this->assertEquals($html, $this->parser->text($markdown));
+        $id = 'test_markdown.'.md5($markdown);
+        $this->assertFalse($this->cache->contains($id));
+        $this->assertEquals($html, $this->parser->transform($markdown));
+        $this->assertTrue($this->cache->contains($id));
+        $this->assertEquals($this->cache->fetch($id), $this->parser->transform($markdown));
     }
 }
