@@ -2,10 +2,10 @@
 
 namespace CSanquer\Bundle\ParsedownBundle\Highlighter;
 
-class Geshi implements HighlighterInterface
+class Pygments implements HighlighterInterface
 {
     public function colorize($text, $language)
     {
-        
+        return $text;
     }
 }

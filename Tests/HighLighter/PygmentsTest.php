@@ -6,5 +6,8 @@ use CSanquer\Bundle\ParsedownBundle\Highlighter\Pygments;
 
 class PygmentsTest extends \PHPUnit_Framework_TestCase
 {
-    
+    public function testColorize()
+    {
+        $this->markTestSkipped('');
+    }
 }
