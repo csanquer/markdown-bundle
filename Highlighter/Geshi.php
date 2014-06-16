@@ -1,6 +1,6 @@
 <?php 
 
-namespace CSanquer\Bundle\ParsedownBundle\Highlighter;
+namespace CSanquer\Bundle\MarkdownBundle\Highlighter;
 
 class Geshi implements HighlighterInterface
 {
@@ -21,6 +21,17 @@ class Geshi implements HighlighterInterface
         $this->colorizer->set_source($text);
         $this->colorizer->set_language($language);
         
-        return $this->colorizer->parse_code();
+        $parsed = $this->colorizer->parse_code();
+        $result = array(
+            'text' => $text,
+            'class' => array($language),
+        );
+
+        if (preg_match('#<pre\s?(?:class="([^"\'<>]+)")?[^<>]*>(.*)</pre>#s', $parsed, $matches)) {
+            $result['class'] = $matches[1];
+            $result['text'] = $matches[2];
+        }
+
+        return $result;
     }
 }

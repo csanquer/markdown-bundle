@@ -1,6 +1,6 @@
 <?php 
 
-namespace CSanquer\Bundle\ParsedownBundle\Highlighter;
+namespace CSanquer\Bundle\MarkdownBundle\Highlighter;
 
 interface HighlighterInterface
 {
@@ -8,7 +8,7 @@ interface HighlighterInterface
      * @param string $text
      * @param string $language
      * 
-     * @return string
+     * @return array text => colorized code, class => CSS classes string
      */
     public function colorize($text, $language);
 }

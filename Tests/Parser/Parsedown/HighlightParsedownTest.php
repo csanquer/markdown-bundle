@@ -1,9 +1,9 @@
 <?php
 
-namespace CSanquer\Bundle\ParsedownBundle\Tests\Parser;
+namespace CSanquer\Bundle\MarkdownBundle\Tests\Parser\Parsedown;
 
-use CSanquer\Bundle\ParsedownBundle\Highlighter\HighlighterInterface;
-use CSanquer\Bundle\ParsedownBundle\Parser\HighlightParsedown;
+use CSanquer\Bundle\MarkdownBundle\Highlighter\HighlighterInterface;
+use CSanquer\Bundle\MarkdownBundle\Parser\Parsedown\HighlightParsedown;
 
 class HighlightParsedownTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,11 +11,14 @@ class HighlightParsedownTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $highlighter = $this->getMock('\\CSanquer\\Bundle\\ParsedownBundle\\Highlighter\\HighlighterInterface');
+        $highlighter = $this->getMock('\\CSanquer\\Bundle\\MarkdownBundle\\Highlighter\\HighlighterInterface');
         $highlighter->expects($this->any())
                 ->method('colorize')
                 ->will($this->returnCallback(function ($text, $language) {
-                    return "//$language colorized\n".$text;
+                    return array(
+                        'text' => "//$language colorized\n".htmlspecialchars($text, ENT_NOQUOTES, 'UTF-8'),
+                        'class' => 'php test-highlighter',
+                    );
                 }));
 
 
@@ -42,7 +45,7 @@ MARKDOWN
         $html = <<<HTML
 <h1>Test</h1>
 <p>Code example : </p>
-<pre><code class="language-php">//php colorized
+<pre><code class="language-php php test-highlighter">//php colorized
 &lt;?php
 phpinfo();
 </code></pre>

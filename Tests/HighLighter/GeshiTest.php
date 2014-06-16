@@ -1,8 +1,8 @@
 <?php
 
-namespace CSanquer\Bundle\ParsedownBundle\Tests\Highlighter;
+namespace CSanquer\Bundle\MarkdownBundle\Tests\Highlighter;
 
-use CSanquer\Bundle\ParsedownBundle\Highlighter\Geshi;
+use CSanquer\Bundle\MarkdownBundle\Highlighter\Geshi;
 
 class GeshiTest extends \PHPUnit_Framework_TestCase
 {
@@ -24,6 +24,14 @@ HTML
         ;
 
         $highlighter = new Geshi();
-        $this->assertEquals($html, $highlighter->colorize($code, 'php'));
+        $this->assertEquals(
+            array(
+                'text' => '<span class="kw2">&lt;?php</span>
+<a href="http://www.php.net/phpinfo"><span class="kw3">phpinfo</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;',
+                'class' => 'php geshi',
+            ), 
+            $highlighter->colorize($code, 'php')
+        );
     }
 }

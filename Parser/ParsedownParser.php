@@ -1,6 +1,6 @@
 <?php
 
-namespace CSanquer\Bundle\ParsedownBundle\Parser;
+namespace CSanquer\Bundle\MarkdownBundle\Parser;
 
 class ParsedownParser implements MarkdownParserInterface
 {
