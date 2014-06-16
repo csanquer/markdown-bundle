@@ -1,7 +1,7 @@
 {
-    "name": "csanquer/parsedown-bundle",
-    "description": "Symfony2 bundle to parse github flavour markdown with syntax highlighting using Parsedown",
-    "keywords": ["parsedown", "markdown", "syntax highlighting", "geshi", "pygments", "pygmentize"],
+    "name": "csanquer/markdown-bundle",
+    "description": "Symfony2 bundle to parse github flavored markdown with syntax highlighting",
+    "keywords": ["parsedown", "markdown", "syntax highlighting", "geshi", "pygments", "pygmentize", "github", "flavored"],
     "license": "MIT",
     "authors": [
         {
@@ -13,7 +13,7 @@
     "type": "symfony-bundle",
     "autoload": {
         "psr-4": {
-            "CSanquer\\Bundle\\ParsedownBundle\\": ""
+            "CSanquer\\Bundle\\MarkdownBundle\\": ""
         }
     },
     "require": {

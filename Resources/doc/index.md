@@ -1,4 +1,4 @@
-CSanquer ParsedownBundle
+CSanquer MarkdownBundle
 ========================
 
 Installation
@@ -9,7 +9,7 @@ Installation
 Install by [Composer](https://getcomposer.org/)
 
 ```sh
-php composer.phar require csanquer/parsedown-bundle=~0.1
+php composer.phar require csanquer/markdown-bundle=~0.1
 ```
 
 ### Register the bundle in the Kernel (`app/AppKernel.php`)
@@ -18,7 +18,7 @@ php composer.phar require csanquer/parsedown-bundle=~0.1
     [...]
     $bundles = array( 
         [...]
-        new CSanquer\Bundle\ParsedownBundle\CSanquerParsedownBundle(),
+        new CSanquer\Bundle\ParsedownBundle\CSanquerMarkdownBundle(),
     );
 ```
 
@@ -40,3 +40,4 @@ Running Tests
 
 Usage
 -----
+
