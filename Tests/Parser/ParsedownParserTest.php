@@ -3,7 +3,7 @@
 namespace CSanquer\Bundle\MarkdownBundle\Tests\Parser;
 
 use CSanquer\Bundle\MarkdownBundle\Highlighter\HighlighterInterface;
-use CSanquer\Bundle\MarkdownBundle\Parser\ParseDown\HighlightParsedown;
+use CSanquer\Bundle\MarkdownBundle\Parser\Parsedown\HighlightParsedown;
 use CSanquer\Bundle\MarkdownBundle\Parser\ParsedownParser;
 
 class ParsedownParserTest extends \PHPUnit_Framework_TestCase
@@ -21,7 +21,6 @@ class ParsedownParserTest extends \PHPUnit_Framework_TestCase
                         'class' => 'php test-highlighter',
                     );
                 }));
-
         $this->parser = new ParsedownParser(new HighlightParsedown($highlighter));
     }
 

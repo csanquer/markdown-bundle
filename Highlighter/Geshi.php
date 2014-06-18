@@ -9,11 +9,17 @@ class Geshi implements HighlighterInterface
      */
     protected $colorizer;
 
+    /**
+     * @var array
+     */
+    protected $supportedLanguages;
+
     public function __construct()
     {
         $this->colorizer = new \GeSHi();
         $this->colorizer->enable_classes();
         $this->colorizer->set_overall_class('geshi');
+        $this->colorizer->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS );
     }
 
     public function colorize($text, $language)
@@ -33,5 +39,28 @@ class Geshi implements HighlighterInterface
         }
 
         return $result;
+    }
+
+    public function getSupportedLanguages()
+    {
+        if (empty($this->supportedLanguages)) {
+            $this->supportedLanguages = $this->colorizer->get_supported_languages();
+            sort($this->supportedLanguages);
+        }
+
+        return $this->supportedLanguages;
+    }
+
+    public function getCss()
+    {
+        $css = '';
+        $supportedLanguages = $this->getSupportedLanguages();
+
+        foreach($supportedLanguages as $language) {
+            $this->colorizer->set_language($language);
+            $css .= preg_replace('/^\/\*\*.*?\*\//s', '', $this->colorizer->get_stylesheet(false));
+        }
+
+        return $css;
     }
 }
