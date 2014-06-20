@@ -29,8 +29,21 @@ class HighlightParsedown extends \Parsedown
 
         if (!empty($language)) {
             $colorized = $this->highlighter->colorize($Block['element']['text']['text'], $language);
-            $Block['element']['text']['text'] = $colorized['text'];
-            $Block['element']['text']['attributes']['class'] .= ' '.$colorized['class'];
+
+            if (preg_match('#<(\w+)\s?(?:class="([^"\'<>]+)")?[^<>]*>(.*)</\w+>#s', $colorized, $matches)) {
+                $elt = array(
+                    'name' => $matches[1],
+                    'text' => $matches[3],
+                );
+
+                if (!empty($matches[2])) {
+                    $elt['attributes'] = array(
+                        'class' => $matches[2],
+                    );
+                }
+
+                $Block['element'] = $elt;
+            }
         }
 
         return $Block;

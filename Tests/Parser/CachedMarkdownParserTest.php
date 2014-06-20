@@ -18,17 +18,12 @@ class CachedMarkdownParserTest extends \PHPUnit_Framework_TestCase
     {
         $highlighter = $this->getMock('\\CSanquer\\Bundle\\MarkdownBundle\\Highlighter\\HighlighterInterface');
         $highlighter->expects($this->any())
-                ->method('colorize')
-                ->will($this->returnCallback(function ($text, $language) {
-                    return array(
-                        'text' => "//$language colorized\n".htmlspecialchars($text, ENT_NOQUOTES, 'UTF-8'),
-                        'class' => 'php test-highlighter',
-                    );
-                }));
-
+            ->method('colorize')
+            ->will($this->returnCallback(function ($text, $language) {
+                return "<pre><code class=\"language-php php test-highlighter\">//$language colorized\n".htmlspecialchars($text, ENT_NOQUOTES, 'UTF-8').'</code></pre>';
+            }));
 
         $this->cache = new ArrayCache();
-
         $this->parser = new CachedMarkdownParser(new ParsedownParser(new HighlightParsedown($highlighter)), $this->cache, 0, 'test_markdown.');
     }
 
