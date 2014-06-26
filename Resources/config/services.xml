@@ -4,17 +4,20 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
     <parameters>
-        <parameter key="csanquer_markdown.example.class">CSanquer\Bundle\MarkdownBundle\Example</parameter>
+        <parameter key="csanquer_markdown.templating.helper.markdown.class">CSanquer\Bundle\MarkdownBundle\Helper\MarkdownHelper</parameter>
+        <parameter key="csanquer_markdown.twig.extension.markdown.class">CSanquer\Bundle\MarkdownBundle\Twig\Extension\MarkdownTwigExtension</parameter>
     </parameters>
 
     <services>
-        <service id="csanquer_markdown.example" class="%csanquer_markdown.example.class%">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+        <service id="csanquer_markdown.templating.helper.markdown" class="%csanquer_markdown.templating.helper.markdown.class%" public="false">
+            <argument type="service" id="csanquer_markdown.parser" />
+            <tag name="templating.helper" alias="markdown" />
+        </service>
+        <service id="tcsanquer_markdown.twig.extension.markdown.twig" class="%csanquer_markdown.twig.extension.markdown.class%" public="false">
+            <argument type="service" id="csanquer_markdown.templating.helper.markdown" />
+            <tag name="twig.extension" />
         </service>
     </services>
-    -->
+
 </container>
