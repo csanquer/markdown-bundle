@@ -1,0 +1,22 @@
+--TEST--
+"markdown" filter
+--TEMPLATE--
+{{ sample|markdown() }}
+--DATA--
+return array('sample' => 'Test
+====
+
+Code example :
+```php
+<?php
+phpinfo();
+
+```
+');
+--EXPECT--
+<h1>Test</h1>
+<p>Code example :</p>
+<pre><code class="language-php php test-highlighter">//php colorized
+&lt;?php
+phpinfo();
+</code></pre>
