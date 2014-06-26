@@ -26,7 +26,7 @@ class CachedMarkdownParser implements MarkdownParserInterface
      */
     protected $cacheTtl;
 
-    public function __construct(MarkdownParserInterface $parser, Cache $cache, $cacheTtl = 0, $cachePrefix = 'markdown.')
+    public function __construct(MarkdownParserInterface $parser, Cache $cache, $cacheTtl = 0, $cachePrefix = 'markdown')
     {
         $this->parser = $parser;
         $this->cache = $cache;
@@ -46,10 +46,11 @@ class CachedMarkdownParser implements MarkdownParserInterface
 
     /**
      * @param string $text markdown text to transform to HTML
+     * @return mixed|string
      */
     public function transform($text)
     {
-        $id = $this->cachePrefix.md5($text);
+        $id = $this->cachePrefix.'.'.md5($text);
         if ($this->cache->contains($id)) {
             $parsedText = $this->cache->fetch($id);
         } else {

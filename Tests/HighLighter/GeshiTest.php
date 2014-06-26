@@ -22,13 +22,11 @@ class GeshiTest extends \PHPUnit_Framework_TestCase
 <?php
 phpinfo();
 
-PHP
-        ;
+PHP;
 
         $html = <<<HTML
 <pre><code class="php geshi"><ol><li class="li1"><div class="de1"><span class="kw2">&lt;?php</span></div></li><li class="li1"><div class="de1"><a href="http://www.php.net/phpinfo"><span class="kw3">phpinfo</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">&nbsp;</div></li></ol></code></pre>
-HTML
-        ;
+HTML;
 
         $this->assertEquals($html, $this->highlighter->colorize($code, 'php'));
     }

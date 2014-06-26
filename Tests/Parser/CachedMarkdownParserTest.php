@@ -24,7 +24,7 @@ class CachedMarkdownParserTest extends \PHPUnit_Framework_TestCase
             }));
 
         $this->cache = new ArrayCache();
-        $this->parser = new CachedMarkdownParser(new ParsedownParser(new HighlightParsedown($highlighter)), $this->cache, 0, 'test_markdown.');
+        $this->parser = new CachedMarkdownParser(new ParsedownParser(new HighlightParsedown($highlighter)), $this->cache, 0, 'test_markdown');
     }
 
     public function testText()
@@ -41,8 +41,7 @@ phpinfo();
 
 ```
 
-MARKDOWN
-        ;
+MARKDOWN;
 
         $html = <<<HTML
 <h1>Test</h1>
@@ -51,8 +50,7 @@ MARKDOWN
 &lt;?php
 phpinfo();
 </code></pre>
-HTML
-        ;
+HTML;
 
         $id = 'test_markdown.'.md5($markdown);
         $this->assertFalse($this->cache->contains($id));

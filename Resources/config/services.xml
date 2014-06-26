@@ -6,11 +6,11 @@
 
     <!--
     <parameters>
-        <parameter key="c_sanquer_markdown.example.class">CSanquer\Bundle\MarkdownBundle\Example</parameter>
+        <parameter key="csanquer_markdown.example.class">CSanquer\Bundle\MarkdownBundle\Example</parameter>
     </parameters>
 
     <services>
-        <service id="c_sanquer_markedown.example" class="%c_sanquer_markdown.example.class%">
+        <service id="csanquer_markdown.example" class="%csanquer_markdown.example.class%">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>

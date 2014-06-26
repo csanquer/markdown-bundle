@@ -23,8 +23,7 @@ class PygmentsTest extends \PHPUnit_Framework_TestCase
 <?php
 phpinfo();
 
-PHP
-        ;
+PHP;
 
         $html = <<<HTML
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -32,8 +31,7 @@ PHP
 <span class="nb">phpinfo</span><span class="p">();</span>
 </code></pre></div>
 </td></tr></table>
-HTML
-        ;
+HTML;
 
         $this->assertEquals($html, $this->highlighter->colorize($code, 'php'));
     }

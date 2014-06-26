@@ -36,8 +36,7 @@ phpinfo();
 
 ```
 
-MARKDOWN
-        ;
+MARKDOWN;
 
         $html = <<<HTML
 <h1>Test</h1>
@@ -46,8 +45,7 @@ MARKDOWN
 &lt;?php
 phpinfo();
 </code></pre>
-HTML
-        ;
+HTML;
 
         $this->assertEquals($html, $this->parser->transform($markdown));
     }
