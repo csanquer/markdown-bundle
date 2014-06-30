@@ -7,6 +7,7 @@
     <parameters>
         <parameter key="csanquer_markdown.templating.helper.markdown.class">CSanquer\Bundle\MarkdownBundle\Helper\MarkdownHelper</parameter>
         <parameter key="csanquer_markdown.twig.extension.markdown.class">CSanquer\Bundle\MarkdownBundle\Twig\Extension\MarkdownTwigExtension</parameter>
+        <parameter key="csanquer_markdown.factory.class">CSanquer\Bundle\MarkdownBundle\Parser\MarkdownParserFactory</parameter>
     </parameters>
 
     <services>
@@ -14,10 +15,36 @@
             <argument type="service" id="csanquer_markdown.parser" />
             <tag name="templating.helper" alias="markdown" />
         </service>
+
         <service id="csanquer_markdown.twig.extension.markdown.twig" class="%csanquer_markdown.twig.extension.markdown.class%" public="false">
             <argument type="service" id="csanquer_markdown.templating.helper.markdown" />
             <tag name="twig.extension" />
         </service>
+
+        <service id="csanquer_markdown.factory" class="%csanquer_markdown.factory.class%"/>
+
+        <service id="csanquer_markdown.highlighter"
+                 class="CSanquer\Bundle\MarkdownBundle\Highlighter\HighlighterInterface"
+                 factory-service="%csanquer_markdown.factory.class%"
+                 factory-method="getHighlighter"
+        >
+            <argument>%csanquer_markdown.highlighter.type%</argument>
+            <argument>%csanquer_markdown.highlighter.pygmentize_bin%</argument>
+        </service>
+
+        <service id="csanquer_markdown.parser"
+                 class="CSanquer\Bundle\MarkdownBundle\Parser\MarkdownParserInterface"
+                 factory-service="%csanquer_markdown.factory.class%"
+                 factory-method="getParser"
+        >
+            <argument>%csanquer_markdown.parser.type%</argument>
+            <argument>%csanquer_markdown.parser.use_highlighter%</argument>
+            <argument type="service" id="csanquer_markdown.highlighter" />
+            <argument></argument>
+            <argument>%csanquer_markdown.parser.cache.ttl%</argument>
+            <argument>%csanquer_markdown.parser.cache.prefix%</argument>
+        </service>
+
     </services>
 
 </container>

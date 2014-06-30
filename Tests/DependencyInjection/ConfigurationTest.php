@@ -25,12 +25,18 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
             array(
                 array(),
                 array(
-                    'parser' => 'parsedown',
-                    'highlighter' => 'geshi',
-                    'cache' => array(
-                        'id' => null,
-                        'prefix' => 'markdown',
-                        'ttl' => 0,
+                    'parser' => array(
+                        'type' => 'parsedown',
+                        'use_highlighter' => true,
+                        'cache' => array(
+                            'id' => null,
+                            'prefix' => 'markdown',
+                            'ttl' => 0,
+                        ),
+                    ),
+                    'highlighter' => array(
+                        'type' => 'geshi',
+                        'pygmentize_bin' => '/usr/bin/pygmentize',
                     ),
                 )
             ),

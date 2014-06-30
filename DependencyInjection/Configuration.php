@@ -22,24 +22,37 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->enumNode('parser')
-                    ->values(array('parsedown', 'sundown'))
-                    ->defaultValue('parsedown')
-                ->end()
-                ->enumNode('highlighter')
-                    ->values(array('geshi', 'pygments'))
-                    ->defaultValue('geshi')
-                ->end()
-                ->arrayNode('cache')
+                ->arrayNode('parser')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('id')->defaultNull()->end()
-                        ->integerNode('ttl')->min(0)->defaultValue(0)->end()
-                        ->scalarNode('prefix')->defaultValue('markdown')->end()
+                        ->enumNode('type')
+                            ->values(array('parsedown', 'sundown'))
+                            ->defaultValue('parsedown')
+                        ->end()
+                        ->booleanNode('use_highlighter')->defaultTrue()->end()
+                        ->arrayNode('cache')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->scalarNode('id')->defaultNull()->end()
+                                ->integerNode('ttl')->min(0)->defaultValue(0)->end()
+                                ->scalarNode('prefix')->defaultValue('markdown')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+
+                ->arrayNode('highlighter')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->enumNode('type')
+                            ->values(array('geshi', 'pygments'))
+                            ->defaultValue('geshi')
+                        ->end()
+                        ->scalarNode('pygmentize_bin')->defaultValue('/usr/bin/pygmentize')->end()
                     ->end()
                 ->end()
             ->end();
-        
+
         return $treeBuilder;
     }
 }

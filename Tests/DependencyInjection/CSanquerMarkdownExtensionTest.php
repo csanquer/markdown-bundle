@@ -12,7 +12,7 @@ class CSanquerMarkdownExtensionTest extends \PHPUnit_Framework_TestCase
         $container = new ContainerBuilder();
         $loader = new CSanquerMarkdownExtension();
         $loader->load(array(array()), $container);
-        
+
         $this->assertTrue($container->hasDefinition('csanquer_markdown.templating.helper.markdown'));
         $this->assertTrue($container->getDefinition('csanquer_markdown.templating.helper.markdown')->hasTag('templating.helper'));
         $tag = $container->getDefinition('csanquer_markdown.templating.helper.markdown')->getTag('templating.helper');
