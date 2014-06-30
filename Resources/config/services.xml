@@ -14,7 +14,7 @@
             <argument type="service" id="csanquer_markdown.parser" />
             <tag name="templating.helper" alias="markdown" />
         </service>
-        <service id="tcsanquer_markdown.twig.extension.markdown.twig" class="%csanquer_markdown.twig.extension.markdown.class%" public="false">
+        <service id="csanquer_markdown.twig.extension.markdown.twig" class="%csanquer_markdown.twig.extension.markdown.class%" public="false">
             <argument type="service" id="csanquer_markdown.templating.helper.markdown" />
             <tag name="twig.extension" />
         </service>

@@ -25,6 +25,18 @@ class MarkdownHelperTest extends \PHPUnit_Framework_TestCase
         $this->helper = new MarkdownHelper(new ParsedownParser(new HighlightParsedown($highlighter)));
     }
 
+    public function testGetName()
+    {
+        $this->assertEquals('markdown', $this->helper->getName());
+    }
+    
+    public function testGetSetCharset()
+    {
+        $this->assertEquals('UTF-8', $this->helper->getCharset());
+        $this->helper->setCharset('ISO-8859-15');
+        $this->assertEquals('ISO-8859-15', $this->helper->getCharset());
+    }
+    
     public function testTransform()
     {
         $markdown = <<<MARKDOWN
