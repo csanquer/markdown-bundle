@@ -2,16 +2,26 @@
 
 namespace CSanquer\Bundle\MarkdownBundle\Tests\Parser;
 
+use Sundown\Markdown;
 use CSanquer\Bundle\MarkdownBundle\Highlighter\HighlighterInterface;
-use CSanquer\Bundle\MarkdownBundle\Parser\Parsedown\HighlightParsedown;
-use CSanquer\Bundle\MarkdownBundle\Parser\ParsedownParser;
+use CSanquer\Bundle\MarkdownBundle\Parser\SundownParser;
+use CSanquer\Bundle\MarkdownBundle\Parser\Sundown\Render\ColorXHTML;
 
-class ParsedownParserTest extends \PHPUnit_Framework_TestCase
+class SundownParserTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var SundownParser
+     */
     protected $parser;
 
     protected function setUp()
     {
+        if (!extension_loaded('sundown')) {
+            $this->markTestSkipped(
+              'The Sundown extension is not available.'
+            );
+        }
+
         $highlighter = $this->getMock('\\CSanquer\\Bundle\\MarkdownBundle\\Highlighter\\HighlighterInterface');
         $highlighter->expects($this->any())
             ->method('colorize')
@@ -19,7 +29,7 @@ class ParsedownParserTest extends \PHPUnit_Framework_TestCase
                 return "<pre><code class=\"language-php php test-highlighter\">//$language colorized\n".htmlspecialchars($text, ENT_NOQUOTES, 'UTF-8').'</code></pre>';
             }));
 
-        $this->parser = new ParsedownParser(new HighlightParsedown($highlighter));
+        $this->parser = new SundownParser(new Markdown(new ColorXHTML($highlighter)));
     }
 
     public function testText()

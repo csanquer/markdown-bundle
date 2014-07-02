@@ -27,7 +27,7 @@ class HighlightParsedownTest extends \PHPUnit_Framework_TestCase
 Test
 ====
 
-Code example : 
+Code example :
 
 ```php
 <?php
@@ -39,7 +39,7 @@ MARKDOWN;
 
         $html = <<<HTML
 <h1>Test</h1>
-<p>Code example : </p>
+<p>Code example :</p>
 <pre><code class="language-php php test-highlighter">//php colorized
 &lt;?php
 phpinfo();
