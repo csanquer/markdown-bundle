@@ -22,7 +22,7 @@ class CachedMarkdownParser implements MarkdownParserInterface
     protected $cachePrefix;
 
     /**
-     * @param int 
+     * @param int
      */
     protected $cacheTtl;
 
@@ -45,7 +45,7 @@ class CachedMarkdownParser implements MarkdownParserInterface
     }
 
     /**
-     * @param string $text markdown text to transform to HTML
+     * @param  string       $text markdown text to transform to HTML
      * @return mixed|string
      */
     public function transform($text)

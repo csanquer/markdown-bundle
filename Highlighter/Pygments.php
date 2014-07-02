@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace CSanquer\Bundle\MarkdownBundle\Highlighter;
 
@@ -43,7 +43,6 @@ class Pygments implements HighlighterInterface
         }
 
         $cmd = $this->pygmentize.' -l '.$language.' -f html '.$argstring;
-
 
         return preg_replace(
             '#<div class="highlight"><pre([^<>]*)>(.*)</pre></div>#s',

@@ -1,6 +1,6 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\Tests\Highlighter;
+namespace CSanquer\Bundle\MarkdownBundle\Tests\HighLighter;
 
 use CSanquer\Bundle\MarkdownBundle\Highlighter\Pygments;
 

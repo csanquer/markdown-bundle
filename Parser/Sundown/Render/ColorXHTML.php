@@ -18,12 +18,12 @@ class ColorXHTML extends XHTML
         parent::__construct();
     }
 
-	public function blockCode($code, $language)
-	{
-		if (!$this->highlighter || empty($language)) {
+    public function blockCode($code, $language)
+    {
+        if (!$this->highlighter || empty($language)) {
             return parent::blockCode($code, $language);
         }
 
         return $this->highlighter->colorize($code, $language);
-	}
+    }
 }

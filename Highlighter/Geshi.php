@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace CSanquer\Bundle\MarkdownBundle\Highlighter;
 
@@ -49,7 +49,7 @@ class Geshi implements HighlighterInterface
         $css = '';
         $supportedLanguages = $this->getSupportedLanguages();
 
-        foreach($supportedLanguages as $language) {
+        foreach ($supportedLanguages as $language) {
             $this->colorizer->set_language($language);
             $css .= preg_replace('/^\/\*\*.*?\*\//s', '', $this->colorizer->get_stylesheet(false));
         }

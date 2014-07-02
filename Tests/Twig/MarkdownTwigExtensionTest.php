@@ -9,9 +9,9 @@ use CSanquer\Bundle\MarkdownBundle\Parser\ParsedownParser;
 
 class MarkdownTwigExtensionTest extends \Twig_Test_IntegrationTestCase
 {
-	public function getExtensions()
+    public function getExtensions()
     {
-    	$highlighter = $this->getMock('\\CSanquer\\Bundle\\MarkdownBundle\\Highlighter\\HighlighterInterface');
+        $highlighter = $this->getMock('\\CSanquer\\Bundle\\MarkdownBundle\\Highlighter\\HighlighterInterface');
         $highlighter->expects($this->any())
             ->method('colorize')
             ->will($this->returnCallback(function ($text, $language) {

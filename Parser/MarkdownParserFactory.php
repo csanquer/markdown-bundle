@@ -13,61 +13,61 @@ use Sundown\Markdown;
 
 class MarkdownParserFactory
 {
-	public function getParser($type, $useHighlighter = true, $highlighter = null, $cache = null, $cacheTtl = 0, $cachePrefix = 'markdown')
-	{
-		if ($type === 'sundown' && !extension_loaded('sundown')) {
+    public function getParser($type, $useHighlighter = true, $highlighter = null, $cache = null, $cacheTtl = 0, $cachePrefix = 'markdown')
+    {
+        if ($type === 'sundown' && !extension_loaded('sundown')) {
             throw new \RuntimeException('Sundown extension is not loaded.');
         }
 
-		switch ($type) {
-			case 'sundown':
-				if ($useHighlighter && $highlighter instanceof HighlighterInterface) {
-					$render = new ColorXHTML($highlighter);
-				} else {
-					$render = new XHTML();
-				}
+        switch ($type) {
+            case 'sundown':
+                if ($useHighlighter && $highlighter instanceof HighlighterInterface) {
+                    $render = new ColorXHTML($highlighter);
+                } else {
+                    $render = new XHTML();
+                }
 
-				$parser = new SundownParser(new Markdown($render));
-				break;
+                $parser = new SundownParser(new Markdown($render));
+                break;
 
-			case 'parsedown':
-			default:
-				if ($useHighlighter && $highlighter instanceof HighlighterInterface) {
-					$parsedown = new HighlightParsedown($highlighter);
-				} else {
-					$parsedown = new \Parsedown();
-				}
+            case 'parsedown':
+            default:
+                if ($useHighlighter && $highlighter instanceof HighlighterInterface) {
+                    $parsedown = new HighlightParsedown($highlighter);
+                } else {
+                    $parsedown = new \Parsedown();
+                }
 
-				$parser = new ParsedownParser($parsedown);
-		}
+                $parser = new ParsedownParser($parsedown);
+        }
 
-		if ($cache instanceof Cache) {
-			$parser = new CachedMarkdownParser($parser, $cache, $cacheTtl, $cachePrefix);
-		}
+        if ($cache instanceof Cache) {
+            $parser = new CachedMarkdownParser($parser, $cache, $cacheTtl, $cachePrefix);
+        }
 
-		return $parser;
-	}
+        return $parser;
+    }
 
-	/**
-	 * get Highlighter service
-	 *
-	 * @param  string $type
-	 * @param  string $pygmentizeBin
-	 * @return HighlighterInterface
-	 */
-	public function getHighlighter($type, $pygmentizeBin = '/usr/bin/pygmentize')
-	{
-		switch ($type) {
-			case 'pygments':
-				$highlighter = new Pygments($pygmentizeBin);
-				break;
+    /**
+     * get Highlighter service
+     *
+     * @param  string               $type
+     * @param  string               $pygmentizeBin
+     * @return HighlighterInterface
+     */
+    public function getHighlighter($type, $pygmentizeBin = '/usr/bin/pygmentize')
+    {
+        switch ($type) {
+            case 'pygments':
+                $highlighter = new Pygments($pygmentizeBin);
+                break;
 
-			case 'geshi':
-			default:
-				$highlighter = new Geshi();
-				break;
-		}
+            case 'geshi':
+            default:
+                $highlighter = new Geshi();
+                break;
+        }
 
-		return $highlighter;
-	}
+        return $highlighter;
+    }
 }

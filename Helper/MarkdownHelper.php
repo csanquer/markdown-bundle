@@ -28,7 +28,7 @@ class MarkdownHelper implements HelperInterface
     /**
      * transform markdown into html
      *
-     * @param string $markdown markdown text
+     * @param  string $markdown markdown text
      * @return string
      */
     public function transform($markdown)
