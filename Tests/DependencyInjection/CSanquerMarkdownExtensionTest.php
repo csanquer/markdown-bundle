@@ -19,5 +19,7 @@ class CSanquerMarkdownExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('markdown', $tag[0]['alias']);
         $this->assertTrue($container->hasDefinition('csanquer_markdown.twig.extension.markdown.twig'));
         $this->assertTrue($container->getDefinition('csanquer_markdown.twig.extension.markdown.twig')->hasTag('twig.extension'));
+        $this->assertTrue($container->hasParameter('csanquer_markdown.parser.sundown.extensions'));
+        $this->assertTrue($container->hasParameter('csanquer_markdown.parser.sundown.flags'));
     }
 }

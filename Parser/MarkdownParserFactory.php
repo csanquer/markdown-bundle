@@ -13,7 +13,23 @@ use Sundown\Markdown;
 
 class MarkdownParserFactory
 {
-    public function getParser($type, $useHighlighter = true, $highlighter = null, $cache = null, $cacheTtl = 0, $cachePrefix = 'markdown')
+    /**
+     * get Markdown Parser
+     * 
+     * @param int $type
+     * @param bool $useHighlighter
+     * @param HighlighterInterface|null $highlighter
+     * @param \Doctrine\Common\Cache\Cache $cache
+     * @param int $cacheTtl
+     * @param string $cachePrefix
+     * @param array $sundownExtensions
+     * @param array $sundownFlags
+     * 
+     * @return \CSanquer\Bundle\MarkdownBundle\Parser\CachedMarkdownParser
+     * 
+     * @throws \RuntimeException
+     */
+    public function getParser($type, $useHighlighter = true, $highlighter = null, $cache = null, $cacheTtl = 0, $cachePrefix = 'markdown', array $sundownExtensions = array(), array $sundownFlags = array())
     {
         if ($type === 'sundown' && !extension_loaded('sundown')) {
             throw new \RuntimeException('Sundown extension is not loaded.');
@@ -22,12 +38,12 @@ class MarkdownParserFactory
         switch ($type) {
             case 'sundown':
                 if ($useHighlighter && $highlighter instanceof HighlighterInterface) {
-                    $render = new ColorXHTML($highlighter);
+                    $render = new ColorXHTML($highlighter, $sundownFlags);
                 } else {
-                    $render = new XHTML();
+                    $render = new XHTML($sundownFlags);
                 }
 
-                $parser = new SundownParser(new Markdown($render));
+                $parser = new SundownParser(new Markdown($render), $sundownExtensions);
                 break;
 
             case 'parsedown':

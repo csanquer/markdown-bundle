@@ -3,7 +3,6 @@
 namespace CSanquer\Bundle\MarkdownBundle\Tests\Parser;
 
 use Sundown\Markdown;
-use CSanquer\Bundle\MarkdownBundle\Highlighter\HighlighterInterface;
 use CSanquer\Bundle\MarkdownBundle\Parser\SundownParser;
 use CSanquer\Bundle\MarkdownBundle\Parser\Sundown\Render\ColorXHTML;
 
@@ -18,7 +17,7 @@ class SundownParserTest extends \PHPUnit_Framework_TestCase
     {
         if (!extension_loaded('sundown')) {
             $this->markTestSkipped(
-              'The Sundown extension is not available.'
+                'The Sundown extension is not available.'
             );
         }
 
@@ -26,10 +25,32 @@ class SundownParserTest extends \PHPUnit_Framework_TestCase
         $highlighter->expects($this->any())
             ->method('colorize')
             ->will($this->returnCallback(function ($text, $language) {
-                return "<pre><code class=\"language-php php test-highlighter\">//$language colorized\n".htmlspecialchars($text, ENT_NOQUOTES, 'UTF-8').'</code></pre>';
-            }));
+                    return "<pre><code class=\"language-php php test-highlighter\">//$language colorized\n".htmlspecialchars($text, ENT_NOQUOTES, 'UTF-8').'</code></pre>';
+                }));
 
-        $this->parser = new SundownParser(new Markdown(new ColorXHTML($highlighter)));
+        $extensions = array(
+            'no_intra_emphasis' => false,
+            'tables' => true,
+            'fenced_code_blocks' => true,
+            'autolink' => true,
+            'strikethrough' => true,
+            'lax_html_blocks' => false,
+            'space_after_headers' => true,
+            'superscript' => false,
+        );
+
+        $flags = array(
+            'filter_html' => false,
+            'no_images' => false,
+            'no_links' => false,
+            'no_styles' => false,
+            'safe_links_only' => false,
+            'with_toc_data' => false,
+            'hard_wrap' => true,
+            'xhtml' => true,
+        );
+
+        $this->parser = new SundownParser(new Markdown(new ColorXHTML($highlighter, $flags), $extensions));
     }
 
     public function testText()
@@ -43,7 +64,6 @@ Code example :
 ```php
 <?php
 phpinfo();
-
 ```
 
 MARKDOWN;

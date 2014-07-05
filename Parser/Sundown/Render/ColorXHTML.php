@@ -12,10 +12,10 @@ class ColorXHTML extends XHTML
      */
     protected $highlighter;
 
-    public function __construct(HighlighterInterface $highlighter = null)
+    public function __construct(HighlighterInterface $highlighter = null, $renderFlags = array())
     {
         $this->highlighter = $highlighter;
-        parent::__construct();
+        parent::__construct($renderFlags);
     }
 
     public function blockCode($code, $language)

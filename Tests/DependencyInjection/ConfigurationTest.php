@@ -33,6 +33,28 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                             'prefix' => 'markdown',
                             'ttl' => 0,
                         ),
+                        'sundown' => array(
+                            'extensions' => array(
+                                'no_intra_emphasis' => false,
+                                'tables' => true,
+                                'fenced_code_blocks' => true,
+                                'autolink' => true,
+                                'strikethrough' => true,
+                                'lax_html_blocks' => false,
+                                'space_after_headers' => true,
+                                'superscript' => false,
+                            ),
+                            'flags' => array(
+                                'filter_html' => false,
+                                'no_images' => false,
+                                'no_links' => false,
+                                'no_styles' => false,
+                                'safe_links_only' => false,
+                                'with_toc_data' => false,
+                                'hard_wrap' => true,
+                                'xhtml' => true,
+                            ),
+                        ),
                     ),
                     'highlighter' => array(
                         'type' => 'geshi',

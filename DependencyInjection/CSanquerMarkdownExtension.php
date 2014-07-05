@@ -33,6 +33,8 @@ class CSanquerMarkdownExtension extends Extension
         $container->setParameter('csanquer_markdown.parser.use_highlighter', $config['parser']['use_highlighter']);
         $container->setParameter('csanquer_markdown.parser.cache.ttl', $config['parser']['cache']['ttl']);
         $container->setParameter('csanquer_markdown.parser.cache.prefix', $config['parser']['cache']['prefix']);
+        $container->setParameter('csanquer_markdown.parser.sundown.extensions', $config['parser']['sundown']['extensions']);
+        $container->setParameter('csanquer_markdown.parser.sundown.flags', $config['parser']['sundown']['flags']);
 
         if (!empty($config['parser']['cache']['id'])) {
             $container->getDefinition('csanquer_markdown.parser')->replaceArgument(3, new Reference($config['parser']['cache']['id']));
