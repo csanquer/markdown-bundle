@@ -25,7 +25,7 @@
 
         <service id="csanquer_markdown.highlighter"
                  class="CSanquer\Bundle\MarkdownBundle\Highlighter\HighlighterInterface"
-                 factory-service="%csanquer_markdown.factory.class%"
+                 factory-service="csanquer_markdown.factory"
                  factory-method="getHighlighter"
         >
             <argument>%csanquer_markdown.highlighter.type%</argument>
@@ -34,7 +34,7 @@
 
         <service id="csanquer_markdown.parser"
                  class="CSanquer\Bundle\MarkdownBundle\Parser\MarkdownParserInterface"
-                 factory-service="%csanquer_markdown.factory.class%"
+                 factory-service="csanquer_markdown.factory"
                  factory-method="getParser"
         >
             <argument>%csanquer_markdown.parser.type%</argument>

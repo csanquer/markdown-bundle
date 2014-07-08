@@ -44,14 +44,16 @@ class Pygments implements HighlighterInterface
 
         $cmd = $this->pygmentize.' -l '.$language.' -f html '.$argstring;
 
+        $colorizedText = shell_exec('echo \''.$text.'\' | '.$cmd);
+        
         return preg_replace(
             '#<div class="highlight"><pre([^<>]*)>(.*)</pre></div>#s',
             '<div><pre$1><code class="highlight pygments '.$language.'">$2</code></pre></div>',
-            shell_exec('echo \''.$text.'\' | '.$cmd)
+            $colorizedText
         );
     }
 
-    public function getCss($style = 'colorful')
+    public function getStyles($style = 'colorful')
     {
         $formatter = 'html';
         $cmd = $this->pygmentize.' -f '.$formatter.' -S '.$style;

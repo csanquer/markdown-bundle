@@ -44,7 +44,7 @@ class Geshi implements HighlighterInterface
         return $this->supportedLanguages;
     }
 
-    public function getCss()
+    public function getStyles()
     {
         $css = '';
         $supportedLanguages = $this->getSupportedLanguages();
