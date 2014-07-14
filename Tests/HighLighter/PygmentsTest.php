@@ -16,7 +16,6 @@ class PygmentsTest extends \PHPUnit_Framework_TestCase
         $this->highlighter = new Pygments();
     }
 
-    /**/
     public function testColorize()
     {
         $code = <<<PHP
@@ -35,7 +34,6 @@ HTML;
 
         $this->assertEquals($html, $this->highlighter->colorize($code, 'php'));
     }
-    /**/
 
     public function testGetSupportedLanguages()
     {
@@ -91,8 +89,39 @@ HTML;
         }
     }
 
-    public function testGetStyles()
+    public function testGetAvailableStyles()
     {
-        $this->assertNotEmpty($this->highlighter->getStyles());
+        $expected = array(
+            'autumn',
+            'borland',
+            'bw',
+            'colorful',
+            'default',
+            'emacs',
+            'friendly',
+            'fruity',
+            'manni',
+            'monokai',
+            'murphy',
+            'native',
+            'pastie',
+            'perldoc',
+            'rrt',
+            'tango',
+            'trac',
+            'vim',
+            'vs',
+        );
+
+        $styles = $this->highlighter->getAvailableStyles();
+        
+        foreach ($expected as $style) {
+            $this->assertContains($style, $styles);
+        }
+    }
+    
+    public function testGetStylesheets()
+    {
+        $this->assertNotEmpty($this->highlighter->getStylesheets());
     }
 }

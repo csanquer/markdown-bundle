@@ -87,8 +87,8 @@ HTML;
         }
     }
 
-    public function testGetStyles()
+    public function testGetStylesheets()
     {
-        $this->assertNotEmpty($this->highlighter->getStyles());
+        $this->assertNotEmpty($this->highlighter->getStylesheets());
     }
 }
