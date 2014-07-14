@@ -13,6 +13,11 @@ class Pygments implements HighlighterInterface
      * @var array
      */
     protected $supportedLanguages;
+    
+    /**
+     * @var array
+     */
+    protected $availableStyles;
 
     public function __construct($pygmentize = '/usr/bin/pygmentize')
     {
@@ -22,8 +27,7 @@ class Pygments implements HighlighterInterface
     public function getSupportedLanguages()
     {
         if (empty($this->supportedLanguages)) {
-            $cmd = $this->pygmentize.' -L lexer | grep "^\*" | sed  \'s/^\*\s*\(.\+\):$/\1/\' | sed \'s/\s*,\s*/\n/g\'';
-            $languages = shell_exec($cmd);
+            $languages = $this->runCommand($this->pygmentize.' -L lexer | grep "^\*" | sed  \'s/^\*\s*\(.\+\):$/\1/\' | sed \'s/\s*,\s*/\n/g\'');
             $this->supportedLanguages = explode("\n", $languages);
         }
 
@@ -42,9 +46,7 @@ class Pygments implements HighlighterInterface
             $argstring .= ' -P ' . escapeshellarg("$argument=$value");
         }
 
-        $cmd = $this->pygmentize.' -l '.$language.' -f html '.$argstring;
-
-        $colorizedText = shell_exec('echo \''.$text.'\' | '.$cmd);
+        $colorizedText = $this->runCommand('echo \''.$text.'\' | '.$this->pygmentize.' -l '.$language.' -f html '.$argstring);
         
         return preg_replace(
             '#<div class="highlight"><pre([^<>]*)>(.*)</pre></div>#s',
@@ -53,12 +55,39 @@ class Pygments implements HighlighterInterface
         );
     }
 
-    public function getStyles($style = 'colorful')
+    public function getStylesheets(array $options = array())
     {
+        $style = empty($options['style']) ? null : $options['style'];
+        
+        if (!in_array($style, $this->getAvailableStyles())) {
+            $style = 'colorful';
+        }
+        
         $formatter = 'html';
-        $cmd = $this->pygmentize.' -f '.$formatter.' -S '.$style;
-        $styles = shell_exec($cmd);
+        $styles = $this->runCommand($this->pygmentize.' -f '.$formatter.' -S '.$style);
 
         return $styles;
+    }
+    
+    /**
+     * 
+     * @return array
+     */
+    public function getAvailableStyles()
+    {
+        if (empty($this->availableStyles)) {
+            $styles = $this->runCommand($this->pygmentize.' -L styles | grep "^\*" | sed  \'s/^\*\s*\(.\+\):$/\1/\'');
+            $this->availableStyles = explode("\n", trim($styles));
+            sort($this->availableStyles);
+        }
+
+        return $this->availableStyles;
+    }
+    
+    protected function runCommand($cmd) 
+    {
+        $result = shell_exec($cmd);
+        
+        return $result;
     }
 }

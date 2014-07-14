@@ -18,38 +18,40 @@ class generateStyleCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
+        $defaultTarget = __DIR__.'/../Resources/public/css';
+        
         $this
             ->setName('csanquer:markdown:generate-style')
             ->setDescription('Generate syntax highlighter CSS stylesheet')
-            ->addArgument('target', InputArgument::OPTIONAL, 'directory where to put css files', __DIR__.'/../Resources/public/css')
-            ->addOption('style', 't', InputOption::VALUE_REQUIRED, 'pygments style', 'colorful')
+            ->addArgument('target', InputArgument::OPTIONAL, 'directory where to put css files', $defaultTarget)
             ->setHelp(<<<EOT
 The <info>%command.name%</info> generate CSS stylesheet for given syntax highlighter:
 
-  <info>php %command.full_name% </info>
+  <info>php %command.full_name% $defaultTarget</info>
 
 EOT
             );
-        ;
     }
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $pygmentsStyle = $input->getOption('style');
         $target = $input->getArgument('target');
         
         $highlighter = $this->getContainer()->get('csanquer_markdown.highlighter');
         
+        $files = array();
         if ($highlighter instanceof \CSanquer\Bundle\MarkdownBundle\Highlighter\Pygments) {
-            $stylesheet = $highlighter->getStyles($pygmentsStyle);
-            $filename = 'pygments_'.$pygmentsStyle.'.css';
-        } else {
-            $stylesheet = $highlighter->getStyles();
-            $filename = 'geshi.css';
+            $styles = $highlighter->getAvailableStyles();
+            foreach ($styles as $style) {
+                $files['pygments_'.$style] = $highlighter->getStylesheets(array('style' => $style));
+            }
+        } elseif ($highlighter instanceof \CSanquer\Bundle\MarkdownBundle\Highlighter\Geshi) {
+            $files['geshi'] = $highlighter->getStylesheets();
         }
         
-        
-        $fs = new Filesystem();        
-        $fs->dumpFile($target.'/'.$filename, $stylesheet);
+        $fs = new Filesystem();
+        foreach ($files as $file => $stylesheet) {
+            $fs->dumpFile($target.'/'.$file.'.css', $stylesheet);
+        }
     }
 }

@@ -44,12 +44,12 @@ class Geshi implements HighlighterInterface
         return $this->supportedLanguages;
     }
 
-    public function getStyles()
+    public function getStylesheets(array $options = array())
     {
         $css = '';
-        $supportedLanguages = $this->getSupportedLanguages();
+        $this->getSupportedLanguages();
 
-        foreach ($supportedLanguages as $language) {
+        foreach ($this->supportedLanguages as $language) {
             $this->colorizer->set_language($language);
             $css .= preg_replace('/^\/\*\*.*?\*\//s', '', $this->colorizer->get_stylesheet(false));
         }
