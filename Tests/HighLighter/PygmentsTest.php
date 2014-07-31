@@ -1,8 +1,8 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\Tests\HighLighter;
+namespace Csanquer\Bundle\MarkdownBundle\Tests\HighLighter;
 
-use CSanquer\Bundle\MarkdownBundle\Highlighter\Pygments;
+use Csanquer\Bundle\MarkdownBundle\Highlighter\Pygments;
 
 class PygmentsTest extends \PHPUnit_Framework_TestCase
 {

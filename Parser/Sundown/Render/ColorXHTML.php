@@ -1,9 +1,9 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\Parser\Sundown\Render;
+namespace Csanquer\Bundle\MarkdownBundle\Parser\Sundown\Render;
 
 use Sundown\Render\XHTML;
-use CSanquer\Bundle\MarkdownBundle\Highlighter\HighlighterInterface;
+use Csanquer\Bundle\MarkdownBundle\Highlighter\HighlighterInterface;
 
 class ColorXHTML extends XHTML
 {

@@ -5,6 +5,6 @@
         http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <route id="csanquer_markdown_preview" path="/preview/markdown" methods="POST">
-        <default key="_controller">CSanquerMarkdownBundle:Preview:markdownPreview</default>
+        <default key="_controller">CsanquerMarkdownBundle:Preview:markdownPreview</default>
     </route>
 </routes>

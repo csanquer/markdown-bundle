@@ -1,6 +1,6 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\DependencyInjection;
+namespace Csanquer\Bundle\MarkdownBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

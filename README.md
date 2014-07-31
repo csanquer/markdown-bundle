@@ -1,4 +1,4 @@
-CSanquer MarkdownBundle
+Csanquer MarkdownBundle
 ========================
 
 [Symfony2](http://symfony.com/) Bundle to parse [github flavored markdown](https://help.github.com/articles/github-flavored-markdown) with syntax highlighting.

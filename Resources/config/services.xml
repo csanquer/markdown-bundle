@@ -5,9 +5,9 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="csanquer_markdown.templating.helper.markdown.class">CSanquer\Bundle\MarkdownBundle\Helper\MarkdownHelper</parameter>
-        <parameter key="csanquer_markdown.twig.extension.markdown.class">CSanquer\Bundle\MarkdownBundle\Twig\Extension\MarkdownTwigExtension</parameter>
-        <parameter key="csanquer_markdown.factory.class">CSanquer\Bundle\MarkdownBundle\Parser\MarkdownParserFactory</parameter>
+        <parameter key="csanquer_markdown.templating.helper.markdown.class">Csanquer\Bundle\MarkdownBundle\Helper\MarkdownHelper</parameter>
+        <parameter key="csanquer_markdown.twig.extension.markdown.class">Csanquer\Bundle\MarkdownBundle\Twig\Extension\MarkdownTwigExtension</parameter>
+        <parameter key="csanquer_markdown.factory.class">Csanquer\Bundle\MarkdownBundle\Parser\MarkdownParserFactory</parameter>
     </parameters>
 
     <services>
@@ -24,7 +24,7 @@
         <service id="csanquer_markdown.factory" class="%csanquer_markdown.factory.class%"/>
 
         <service id="csanquer_markdown.highlighter"
-                 class="CSanquer\Bundle\MarkdownBundle\Highlighter\HighlighterInterface"
+                 class="Csanquer\Bundle\MarkdownBundle\Highlighter\HighlighterInterface"
                  factory-service="csanquer_markdown.factory"
                  factory-method="getHighlighter"
         >
@@ -33,7 +33,7 @@
         </service>
 
         <service id="csanquer_markdown.parser"
-                 class="CSanquer\Bundle\MarkdownBundle\Parser\MarkdownParserInterface"
+                 class="Csanquer\Bundle\MarkdownBundle\Parser\MarkdownParserInterface"
                  factory-service="csanquer_markdown.factory"
                  factory-method="getParser"
         >

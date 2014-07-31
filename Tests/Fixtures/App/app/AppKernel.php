@@ -10,7 +10,7 @@ class AppKernel extends Kernel
         return array(
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
 
-            new CSanquer\Bundle\MarkdownBundle\CSanquerMarkdownBundle(),
+            new Csanquer\Bundle\MarkdownBundle\CsanquerMarkdownBundle(),
         );
     }
 
@@ -24,7 +24,7 @@ class AppKernel extends Kernel
      */
     public function getCacheDir()
     {
-        $cacheDir = sys_get_temp_dir().'/CSanquerMarkdownBundle/cache';
+        $cacheDir = sys_get_temp_dir().'/CsanquerMarkdownBundle/cache';
         if (!is_dir($cacheDir)) {
             mkdir($cacheDir, 0777, true);
         }
@@ -37,7 +37,7 @@ class AppKernel extends Kernel
      */
     public function getLogDir()
     {
-        $logDir = sys_get_temp_dir().'/CSanquerMarkdownBundle/logs';
+        $logDir = sys_get_temp_dir().'/CsanquerMarkdownBundle/logs';
         if (!is_dir($logDir)) {
             mkdir($logDir, 0777, true);
         }

@@ -1,17 +1,17 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\Tests\Twig;
+namespace Csanquer\Bundle\MarkdownBundle\Tests\Twig;
 
-use CSanquer\Bundle\MarkdownBundle\Twig\Extension\MarkdownTwigExtension;
-use CSanquer\Bundle\MarkdownBundle\Helper\MarkdownHelper;
-use CSanquer\Bundle\MarkdownBundle\Parser\Parsedown\HighlightParsedown;
-use CSanquer\Bundle\MarkdownBundle\Parser\ParsedownParser;
+use Csanquer\Bundle\MarkdownBundle\Twig\Extension\MarkdownTwigExtension;
+use Csanquer\Bundle\MarkdownBundle\Helper\MarkdownHelper;
+use Csanquer\Bundle\MarkdownBundle\Parser\Parsedown\HighlightParsedown;
+use Csanquer\Bundle\MarkdownBundle\Parser\ParsedownParser;
 
 class MarkdownTwigExtensionTest extends \Twig_Test_IntegrationTestCase
 {
     public function getExtensions()
     {
-        $highlighter = $this->getMock('\\CSanquer\\Bundle\\MarkdownBundle\\Highlighter\\HighlighterInterface');
+        $highlighter = $this->getMock('\\Csanquer\\Bundle\\MarkdownBundle\\Highlighter\\HighlighterInterface');
         $highlighter->expects($this->any())
             ->method('colorize')
             ->will($this->returnCallback(function ($text, $language) {

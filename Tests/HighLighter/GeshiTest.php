@@ -1,8 +1,8 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\Tests\HighLighter;
+namespace Csanquer\Bundle\MarkdownBundle\Tests\HighLighter;
 
-use CSanquer\Bundle\MarkdownBundle\Highlighter\Geshi;
+use Csanquer\Bundle\MarkdownBundle\Highlighter\Geshi;
 
 class GeshiTest extends \PHPUnit_Framework_TestCase
 {

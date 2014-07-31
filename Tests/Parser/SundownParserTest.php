@@ -1,10 +1,10 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\Tests\Parser;
+namespace Csanquer\Bundle\MarkdownBundle\Tests\Parser;
 
 use Sundown\Markdown;
-use CSanquer\Bundle\MarkdownBundle\Parser\SundownParser;
-use CSanquer\Bundle\MarkdownBundle\Parser\Sundown\Render\ColorXHTML;
+use Csanquer\Bundle\MarkdownBundle\Parser\SundownParser;
+use Csanquer\Bundle\MarkdownBundle\Parser\Sundown\Render\ColorXHTML;
 
 class SundownParserTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,7 +21,7 @@ class SundownParserTest extends \PHPUnit_Framework_TestCase
             );
         }
 
-        $highlighter = $this->getMock('\\CSanquer\\Bundle\\MarkdownBundle\\Highlighter\\HighlighterInterface');
+        $highlighter = $this->getMock('\\Csanquer\\Bundle\\MarkdownBundle\\Highlighter\\HighlighterInterface');
         $highlighter->expects($this->any())
             ->method('colorize')
             ->will($this->returnCallback(function ($text, $language) {

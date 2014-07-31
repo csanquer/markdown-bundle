@@ -1,6 +1,6 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\Controller;
+namespace Csanquer\Bundle\MarkdownBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;

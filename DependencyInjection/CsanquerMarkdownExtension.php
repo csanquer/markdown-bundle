@@ -1,6 +1,6 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\DependencyInjection;
+namespace Csanquer\Bundle\MarkdownBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\Reference;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class CSanquerMarkdownExtension extends Extension
+class CsanquerMarkdownExtension extends Extension
 {
     /**
      * {@inheritDoc}

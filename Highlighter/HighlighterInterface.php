@@ -1,6 +1,6 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\Highlighter;
+namespace Csanquer\Bundle\MarkdownBundle\Highlighter;
 
 interface HighlighterInterface
 {

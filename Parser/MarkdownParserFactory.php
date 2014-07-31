@@ -1,13 +1,13 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\Parser;
+namespace Csanquer\Bundle\MarkdownBundle\Parser;
 
 use Doctrine\Common\Cache\Cache;
-use CSanquer\Bundle\MarkdownBundle\Highlighter\HighlighterInterface;
-use CSanquer\Bundle\MarkdownBundle\Highlighter\Geshi;
-use CSanquer\Bundle\MarkdownBundle\Highlighter\Pygments;
-use CSanquer\Bundle\MarkdownBundle\Parser\Parsedown\HighlightParsedown;
-use CSanquer\Bundle\MarkdownBundle\Parser\Sundown\Render\ColorXHTML;
+use Csanquer\Bundle\MarkdownBundle\Highlighter\HighlighterInterface;
+use Csanquer\Bundle\MarkdownBundle\Highlighter\Geshi;
+use Csanquer\Bundle\MarkdownBundle\Highlighter\Pygments;
+use Csanquer\Bundle\MarkdownBundle\Parser\Parsedown\HighlightParsedown;
+use Csanquer\Bundle\MarkdownBundle\Parser\Sundown\Render\ColorXHTML;
 use Sundown\Render\XHTML;
 use Sundown\Markdown;
 
@@ -25,7 +25,7 @@ class MarkdownParserFactory
      * @param array                        $sundownExtensions
      * @param array                        $sundownFlags
      *
-     * @return \CSanquer\Bundle\MarkdownBundle\Parser\CachedMarkdownParser
+     * @return \Csanquer\Bundle\MarkdownBundle\Parser\CachedMarkdownParser
      *
      * @throws \RuntimeException
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\Command;
+namespace Csanquer\Bundle\MarkdownBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -39,12 +39,12 @@ EOT
         $highlighter = $this->getContainer()->get('csanquer_markdown.highlighter');
 
         $files = array();
-        if ($highlighter instanceof \CSanquer\Bundle\MarkdownBundle\Highlighter\Pygments) {
+        if ($highlighter instanceof \Csanquer\Bundle\MarkdownBundle\Highlighter\Pygments) {
             $styles = $highlighter->getAvailableStyles();
             foreach ($styles as $style) {
                 $files['pygments_'.$style] = $highlighter->getStylesheets(array('style' => $style));
             }
-        } elseif ($highlighter instanceof \CSanquer\Bundle\MarkdownBundle\Highlighter\Geshi) {
+        } elseif ($highlighter instanceof \Csanquer\Bundle\MarkdownBundle\Highlighter\Geshi) {
             $files['geshi'] = $highlighter->getStylesheets();
         }
 

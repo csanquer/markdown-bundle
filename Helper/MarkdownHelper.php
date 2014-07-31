@@ -1,9 +1,9 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\Helper;
+namespace Csanquer\Bundle\MarkdownBundle\Helper;
 
 use Symfony\Component\Templating\Helper\HelperInterface;
-use CSanquer\Bundle\MarkdownBundle\Parser\MarkdownParserInterface;
+use Csanquer\Bundle\MarkdownBundle\Parser\MarkdownParserInterface;
 
 /**
  * PHP Template View Markdown Helper

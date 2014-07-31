@@ -1,8 +1,8 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\Parser\Parsedown;
+namespace Csanquer\Bundle\MarkdownBundle\Parser\Parsedown;
 
-use \CSanquer\Bundle\MarkdownBundle\Highlighter\HighlighterInterface;
+use \Csanquer\Bundle\MarkdownBundle\Highlighter\HighlighterInterface;
 
 class HighlightParsedown extends \Parsedown
 {

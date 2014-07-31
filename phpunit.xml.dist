@@ -12,7 +12,7 @@
     syntaxCheck                 = "false"
     bootstrap                   = "./vendor/autoload.php" >
     <testsuites>
-        <testsuite name="CSanquer MarkdownBundle Test Suite">
+        <testsuite name="Csanquer MarkdownBundle Test Suite">
             <directory suffix="Test.php">./Tests/</directory>
         </testsuite>
     </testsuites>

@@ -13,7 +13,7 @@
     "type": "symfony-bundle",
     "autoload": {
         "psr-4": {
-            "CSanquer\\Bundle\\MarkdownBundle\\": ""
+            "Csanquer\\Bundle\\MarkdownBundle\\": ""
         }
     },
     "require": {

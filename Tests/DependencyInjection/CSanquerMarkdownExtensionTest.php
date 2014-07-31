@@ -1,16 +1,16 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\Tests\DependencyInjection;
+namespace Csanquer\Bundle\MarkdownBundle\Tests\DependencyInjection;
 
-use CSanquer\Bundle\MarkdownBundle\DependencyInjection\CSanquerMarkdownExtension;
+use Csanquer\Bundle\MarkdownBundle\DependencyInjection\CsanquerMarkdownExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class CSanquerMarkdownExtensionTest extends \PHPUnit_Framework_TestCase
+class CsanquerMarkdownExtensionTest extends \PHPUnit_Framework_TestCase
 {
     public function testDefault()
     {
         $container = new ContainerBuilder();
-        $loader = new CSanquerMarkdownExtension();
+        $loader = new CsanquerMarkdownExtension();
         $loader->load(array(array()), $container);
 
         $this->assertTrue($container->hasDefinition('csanquer_markdown.templating.helper.markdown'));

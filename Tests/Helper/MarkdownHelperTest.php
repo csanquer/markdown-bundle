@@ -1,10 +1,10 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\Tests\Helper;
+namespace Csanquer\Bundle\MarkdownBundle\Tests\Helper;
 
-use CSanquer\Bundle\MarkdownBundle\Helper\MarkdownHelper;
-use CSanquer\Bundle\MarkdownBundle\Parser\Parsedown\HighlightParsedown;
-use CSanquer\Bundle\MarkdownBundle\Parser\ParsedownParser;
+use Csanquer\Bundle\MarkdownBundle\Helper\MarkdownHelper;
+use Csanquer\Bundle\MarkdownBundle\Parser\Parsedown\HighlightParsedown;
+use Csanquer\Bundle\MarkdownBundle\Parser\ParsedownParser;
 
 class MarkdownHelperTest extends \PHPUnit_Framework_TestCase
 {
@@ -15,7 +15,7 @@ class MarkdownHelperTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $highlighter = $this->getMock('\\CSanquer\\Bundle\\MarkdownBundle\\Highlighter\\HighlighterInterface');
+        $highlighter = $this->getMock('\\Csanquer\\Bundle\\MarkdownBundle\\Highlighter\\HighlighterInterface');
         $highlighter->expects($this->any())
             ->method('colorize')
             ->will($this->returnCallback(function ($text, $language) {

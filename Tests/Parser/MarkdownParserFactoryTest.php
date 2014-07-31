@@ -1,8 +1,8 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\Tests\Parser;
+namespace Csanquer\Bundle\MarkdownBundle\Tests\Parser;
 
-use CSanquer\Bundle\MarkdownBundle\Parser\MarkdownParserFactory;
+use Csanquer\Bundle\MarkdownBundle\Parser\MarkdownParserFactory;
 
 class MarkdownParserFactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -35,11 +35,11 @@ class MarkdownParserFactoryTest extends \PHPUnit_Framework_TestCase
         return array(
             array(
                 'geshi',
-                '\\CSanquer\\Bundle\\MarkdownBundle\\Highlighter\\Geshi',
+                '\\Csanquer\\Bundle\\MarkdownBundle\\Highlighter\\Geshi',
             ),
             array(
                 'pygments',
-                '\\CSanquer\\Bundle\\MarkdownBundle\\Highlighter\\Pygments',
+                '\\Csanquer\\Bundle\\MarkdownBundle\\Highlighter\\Pygments',
             ),
         );
     }
@@ -61,11 +61,11 @@ class MarkdownParserFactoryTest extends \PHPUnit_Framework_TestCase
         return array(
             array(
                 'parsedown',
-                '\\CSanquer\\Bundle\\MarkdownBundle\\Parser\\ParsedownParser',
+                '\\Csanquer\\Bundle\\MarkdownBundle\\Parser\\ParsedownParser',
             ),
             array(
                 'sundown',
-                '\\CSanquer\\Bundle\\MarkdownBundle\\Parser\\SundownParser',
+                '\\Csanquer\\Bundle\\MarkdownBundle\\Parser\\SundownParser',
             ),
         );
     }

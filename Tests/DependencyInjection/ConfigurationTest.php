@@ -1,9 +1,9 @@
 <?php
 
-namespace CSanquer\Bundle\MarkdownBundle\Tests\DependencyInjection;
+namespace Csanquer\Bundle\MarkdownBundle\Tests\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Processor;
-use CSanquer\Bundle\MarkdownBundle\DependencyInjection\Configuration;
+use Csanquer\Bundle\MarkdownBundle\DependencyInjection\Configuration;
 
 class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {

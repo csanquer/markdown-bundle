@@ -1,4 +1,4 @@
-CSanquer MarkdownBundle
+Csanquer MarkdownBundle
 ========================
 
 Installation
@@ -18,7 +18,7 @@ php composer.phar require csanquer/markdown-bundle=~0.1
     [...]
     $bundles = array( 
         [...]
-        new CSanquer\Bundle\ParsedownBundle\CSanquerMarkdownBundle(),
+        new Csanquer\Bundle\ParsedownBundle\CsanquerMarkdownBundle(),
     );
 ```
 

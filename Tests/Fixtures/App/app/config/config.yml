@@ -8,7 +8,7 @@ framework:
     translator:      { fallback: en }
     profiler:        { only_exceptions: false }
 
-c_sanquer_markdown:
+csanquer_markdown:
     parser:
         type: parsedown
         use_highlighter: true
