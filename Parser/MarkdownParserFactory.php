@@ -15,18 +15,18 @@ class MarkdownParserFactory
 {
     /**
      * get Markdown Parser
-     * 
-     * @param int $type
-     * @param bool $useHighlighter
-     * @param HighlighterInterface|null $highlighter
+     *
+     * @param int                          $type
+     * @param bool                         $useHighlighter
+     * @param HighlighterInterface|null    $highlighter
      * @param \Doctrine\Common\Cache\Cache $cache
-     * @param int $cacheTtl
-     * @param string $cachePrefix
-     * @param array $sundownExtensions
-     * @param array $sundownFlags
-     * 
+     * @param int                          $cacheTtl
+     * @param string                       $cachePrefix
+     * @param array                        $sundownExtensions
+     * @param array                        $sundownFlags
+     *
      * @return \CSanquer\Bundle\MarkdownBundle\Parser\CachedMarkdownParser
-     * 
+     *
      * @throws \RuntimeException
      */
     public function getParser($type, $useHighlighter = true, $highlighter = null, $cache = null, $cacheTtl = 0, $cachePrefix = 'markdown', array $sundownExtensions = array(), array $sundownFlags = array())

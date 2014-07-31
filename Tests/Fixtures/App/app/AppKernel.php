@@ -28,6 +28,7 @@ class AppKernel extends Kernel
         if (!is_dir($cacheDir)) {
             mkdir($cacheDir, 0777, true);
         }
+
         return $cacheDir;
     }
 

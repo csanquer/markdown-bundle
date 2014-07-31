@@ -13,7 +13,7 @@ class Pygments implements HighlighterInterface
      * @var array
      */
     protected $supportedLanguages;
-    
+
     /**
      * @var array
      */
@@ -47,7 +47,7 @@ class Pygments implements HighlighterInterface
         }
 
         $colorizedText = $this->runCommand('echo \''.$text.'\' | '.$this->pygmentize.' -l '.$language.' -f html '.$argstring);
-        
+
         return preg_replace(
             '#<div class="highlight"><pre([^<>]*)>(.*)</pre></div>#s',
             '<div><pre$1><code class="highlight pygments '.$language.'">$2</code></pre></div>',
@@ -58,19 +58,19 @@ class Pygments implements HighlighterInterface
     public function getStylesheets(array $options = array())
     {
         $style = empty($options['style']) ? null : $options['style'];
-        
+
         if (!in_array($style, $this->getAvailableStyles())) {
             $style = 'colorful';
         }
-        
+
         $formatter = 'html';
         $styles = $this->runCommand($this->pygmentize.' -f '.$formatter.' -S '.$style);
 
         return $styles;
     }
-    
+
     /**
-     * 
+     *
      * @return array
      */
     public function getAvailableStyles()
@@ -83,11 +83,11 @@ class Pygments implements HighlighterInterface
 
         return $this->availableStyles;
     }
-    
-    protected function runCommand($cmd) 
+
+    protected function runCommand($cmd)
     {
         $result = shell_exec($cmd);
-        
+
         return $result;
     }
 }

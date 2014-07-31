@@ -4,7 +4,7 @@ namespace CSanquer\Bundle\MarkdownBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class SitemapControllerTest extends WebTestCase
+class PreviewControllerTest extends WebTestCase
 {
     /**
      * @dataProvider providerMarkdownPreview
