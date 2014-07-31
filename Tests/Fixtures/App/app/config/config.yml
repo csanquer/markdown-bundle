@@ -1,0 +1,20 @@
+framework:
+    secret:          test secret
+    router:          { resource: "%kernel.root_dir%/config/routing.yml" }
+    form:            true
+    csrf_protection: true
+    session:         ~
+    default_locale:  en
+    translator:      { fallback: en }
+    profiler:        { only_exceptions: false }
+
+c_sanquer_markdown:
+    parser:
+        type: parsedown
+        use_highlighter: true
+
+    highlighter:
+        type: geshi
+
+    # cache:
+    #     id:

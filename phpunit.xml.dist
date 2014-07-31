@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit 
+<phpunit
     backupGlobals               = "false"
     backupStaticAttributes      = "false"
     colors                      = "true"
@@ -17,6 +17,10 @@
         </testsuite>
     </testsuites>
 
+    <php>
+        <server name="KERNEL_DIR" value="./Tests/Fixtures/App/app" />
+    </php>
+
     <filter>
         <whitelist>
             <directory>./</directory>
@@ -27,7 +31,7 @@
             </exclude>
         </whitelist>
     </filter>
-    
+
     <logging>
       <log type="coverage-html" target="coverage" charset="UTF-8"
            yui="true" highlight="true"

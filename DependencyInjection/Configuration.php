@@ -40,7 +40,7 @@ class Configuration implements ConfigurationInterface
                         ->end()
                         ->arrayNode('sundown')
                             ->addDefaultsIfNotSet()
-                            ->children()    
+                            ->children()
                                 ->arrayNode('extensions')
                                     ->addDefaultsIfNotSet()
                                     ->children()

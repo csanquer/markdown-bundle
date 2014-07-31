@@ -1,0 +1,2 @@
+csanquer_markdown_bundle:
+    resource: "@CSanquerMarkdownBundle/Resources/config/routing.xml"

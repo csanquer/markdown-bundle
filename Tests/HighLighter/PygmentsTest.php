@@ -106,20 +106,18 @@ HTML;
             'native',
             'pastie',
             'perldoc',
-            'rrt',
             'tango',
             'trac',
-            'vim',
             'vs',
         );
 
         $styles = $this->highlighter->getAvailableStyles();
-        
+
         foreach ($expected as $style) {
             $this->assertContains($style, $styles);
         }
     }
-    
+
     public function testGetStylesheets()
     {
         $this->assertNotEmpty($this->highlighter->getStylesheets());
