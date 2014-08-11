@@ -8,9 +8,13 @@
         <parameter key="csanquer_markdown.templating.helper.markdown.class">Csanquer\Bundle\MarkdownBundle\Helper\MarkdownHelper</parameter>
         <parameter key="csanquer_markdown.twig.extension.markdown.class">Csanquer\Bundle\MarkdownBundle\Twig\Extension\MarkdownTwigExtension</parameter>
         <parameter key="csanquer_markdown.factory.class">Csanquer\Bundle\MarkdownBundle\Parser\MarkdownParserFactory</parameter>
+        <parameter key="csanquer_markdown.form.type.markitup_markdown.class">Csanquer\Bundle\MarkdownBundle\Form\Type\MarkitupMarkdownType</parameter>
+        <parameter key="csanquer_markdown.form.type.bootstrap_markdown.class">Csanquer\Bundle\MarkdownBundle\Form\Type\BootstrapMarkdownType</parameter>
     </parameters>
 
     <services>
+        <!-- Templating helper and twig extension -->
+
         <service id="csanquer_markdown.templating.helper.markdown" class="%csanquer_markdown.templating.helper.markdown.class%" public="false">
             <argument type="service" id="csanquer_markdown.parser" />
             <tag name="templating.helper" alias="markdown" />
@@ -20,6 +24,8 @@
             <argument type="service" id="csanquer_markdown.templating.helper.markdown" />
             <tag name="twig.extension" />
         </service>
+
+        <!-- Syntax Highlighter and Markdown Parser created by a factory -->
 
         <service id="csanquer_markdown.factory" class="%csanquer_markdown.factory.class%"/>
 
@@ -43,8 +49,21 @@
             <argument></argument>
             <argument>%csanquer_markdown.parser.cache.ttl%</argument>
             <argument>%csanquer_markdown.parser.cache.prefix%</argument>
+            <argument>%csanquer_markdown.parser.sundown.extensions%</argument>
+            <argument>%csanquer_markdown.parser.sundown.flags%</argument>
         </service>
 
+        <!--Form Types -->
+        <service id="csanquer_markdown.form.type.markitup_markdown" class="%csanquer_markdown.form.type.markitup_markdown.class%">
+            <argument>%csanquer_markdown.preview.var%</argument>
+            <tag name="form.type" alias="csanquer_markitup_markdown" />
+        </service>
+
+        <service id="csanquer_markdown.form.type.bootstrap_markdown" class="%csanquer_markdown.form.type.bootstrap_markdown.class%">
+            <argument>%csanquer_markdown.preview.var%</argument>
+            <argument>%csanquer_markdown.preview.bootstrap_icons%</argument>
+            <tag name="form.type" alias="csanquer_bootstrap_markdown" />
+        </service>
     </services>
 
 </container>

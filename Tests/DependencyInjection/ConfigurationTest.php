@@ -25,6 +25,12 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
             array(
                 array(),
                 array(
+                    'preview' => array(
+                        'bootstrap_icons' => 'glyph',
+                        'var' => 'markdown',
+                        'use_template' => false,
+                        'template' => 'CsanquerMarkdownBundle:Preview:layout.html.twig',
+                    ),
                     'parser' => array(
                         'type' => 'parsedown',
                         'use_highlighter' => true,

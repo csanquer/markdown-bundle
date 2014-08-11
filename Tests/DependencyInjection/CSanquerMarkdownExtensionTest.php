@@ -6,7 +6,7 @@ use Csanquer\Bundle\MarkdownBundle\DependencyInjection\CsanquerMarkdownExtension
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
-class CsanquerMarkdownExtensionTest extends \PHPUnit_Framework_TestCase
+class CSanquerMarkdownExtensionTest extends \PHPUnit_Framework_TestCase
 {
     public function testDefault()
     {

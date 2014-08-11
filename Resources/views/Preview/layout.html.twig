@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Markdown Preview{% endblock title %}</title>
+{% block css %}{% endblock css %}
+{% block js %}{% endblock js %}
+</head>
+<body>
+{% block container %}
+    <div class="content">
+        {{ content|raw }}
+    </div>
+{% endblock container %}
+</body>
+</html>

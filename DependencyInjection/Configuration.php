@@ -18,10 +18,23 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('csanquer_parsedown');
+        $rootNode = $treeBuilder->root('csanquer_markdown');
 
         $rootNode
             ->children()
+                ->arrayNode('preview')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->enumNode('bootstrap_icons')
+                            ->values(array('glyph', 'fa'))
+                            ->defaultValue('glyph')
+                        ->end()
+                        ->scalarNode('var')->defaultValue('markdown')->end()
+                        ->booleanNode('use_template')->defaultFalse()->end()
+                        ->scalarNode('template')->defaultValue('CsanquerMarkdownBundle:Preview:layout.html.twig')->end()
+                    ->end()
+                ->end()
+
                 ->arrayNode('parser')
                     ->addDefaultsIfNotSet()
                     ->children()

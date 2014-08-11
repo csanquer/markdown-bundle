@@ -26,6 +26,11 @@ class CsanquerMarkdownExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
 
+        $container->setParameter('csanquer_markdown.preview.bootstrap_icons', $config['preview']['bootstrap_icons']);
+        $container->setParameter('csanquer_markdown.preview.var', $config['preview']['var']);
+        $container->setParameter('csanquer_markdown.preview.use_template', $config['preview']['use_template']);
+        $container->setParameter('csanquer_markdown.preview.template', $config['preview']['template']);
+
         $container->setParameter('csanquer_markdown.highlighter.type', $config['highlighter']['type']);
         $container->setParameter('csanquer_markdown.highlighter.pygmentize_bin', $config['highlighter']['pygmentize_bin']);
 

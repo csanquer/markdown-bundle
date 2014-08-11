@@ -19,8 +19,8 @@
     "require": {
         "php": ">=5.3.3",
         "symfony/framework-bundle": "~2.3",
+        "symfony/twig-bundle": "~2.3",
         "symfony/form": "~2.3",
-        "twig/twig": "~1.1",
         "erusev/parsedown": "~1.0",
         "easybook/geshi": "~1.0",
         "doctrine/cache": "~1.3"

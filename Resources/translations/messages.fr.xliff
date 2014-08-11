@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>markitup.lvl_head_1</source>
+                <target>Titre niveau 1</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>markitup.lvl_head_2</source>
+                <target>Titre niveau 2</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>markitup.lvl_head_3</source>
+                <target>Titre niveau 3</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>markitup.lvl_head_4</source>
+                <target>Titre niveau 4</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>markitup.lvl_head_5</source>
+                <target>Titre niveau 5</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>markitup.lvl_head_6</source>
+                <target>Titre niveau 6</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>markitup.your_title_here</source>
+                <target>Votre titre...</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>markitup.bold</source>
+                <target>Gras</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>markitup.italic</source>
+                <target>Italique</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>markitup.bulleted_list</source>
+                <target>Liste à puces</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>markitup.numeric_list</source>
+                <target>Liste numerotée</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>markitup.picture</source>
+                <target>Image</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>markitup.link</source>
+                <target>Lien</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>markitup.your_text_to_link</source>
+                <target>Votre texte de lien ici...</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>markitup.quotes</source>
+                <target>Quotes</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>markitup.code_block</source>
+                <target>Code / Bloc de code</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>markitup.preview</source>
+                <target>Aperçu</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -43,7 +43,7 @@ class MarkdownParserFactory
                     $render = new XHTML($sundownFlags);
                 }
 
-                $parser = new SundownParser(new Markdown($render), $sundownExtensions);
+                $parser = new SundownParser(new Markdown($render, $sundownExtensions));
                 break;
 
             case 'parsedown':

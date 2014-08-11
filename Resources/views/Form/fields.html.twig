@@ -1,0 +1,118 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{% block csanquer_bootstrap_markdown_widget %}
+{% spaceless %}
+    {{ block('textarea_widget') }}
+    {{ block('csanquer_bootstrap_markdown_javascript') }}
+{% endspaceless %}
+{% endblock %}
+
+{% block csanquer_markitup_markdown_widget %}
+{% spaceless %}
+    {{ block('textarea_widget') }}
+    {{ block('csanquer_markitup_markdown_javascript') }}
+{% endspaceless %}
+{% endblock %}
+
+{% block csanquer_bootstrap_markdown_javascript %}
+{% spaceless %}
+    <script type="text/javascript">
+        (function($){
+            $(document).ready(function() {
+                var bootstrapMarkdownSettings = {
+                        language: '{{ language }}',
+                        iconlibrary: '{{ iconlibrary }}',
+                        onPreview: function(e) {
+                            var previewContent;
+
+                            if (typeof(e.$lastPreview) == 'undefined' || e.$lastPreview === null || e.isDirty()) {
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '{{ path(preview_route) }}',
+                                    data: {
+                                        use_template: 0,
+                                        '{{ preview_var }}': e.getContent()
+                                    },
+                                    success: function(data) {
+                                        if (data != e.$lastPreview || e.isDirty()) {
+                                            e.$lastPreview = data;
+                                            e.$oldContent = e.getContent();
+                                            e.hidePreview();
+                                            e.showPreview();
+                                        }
+                                    }
+                                });
+                            } else {
+                                previewContent = e.$lastPreview;
+                            }
+
+                            return previewContent;
+                        }
+                    };
+
+                $('#{{ id }}').markdown(
+                    $.extend(
+                            bootstrapMarkdownSettings,
+                        {{ json|default('{}')|raw }}
+                    )
+                );
+            });
+        })(jQuery);
+    </script>
+{% endspaceless %}
+{% endblock %}
+
+{% block csanquer_markitup_markdown_javascript %}
+{% spaceless %}
+    <script type="text/javascript">
+        (function($){
+            $(document).ready(function(){
+                var markdownTitle = function(markItUp, char) {
+                    var heading = '';
+                    var n = $.trim(markItUp.selection||markItUp.placeHolder).length;
+                    for(var i = 0; i < n; i++) {
+                        heading += char;
+                    }
+                    return "\n"+heading;
+                }
+
+                var markItUpDefaultSettings = {
+                    nameSpace:          'markdown',
+                    previewParserVar: '{{ preview_var }}',
+                    previewParserPath:    '{{ path(preview_route) }}',
+                    onShiftEnter:        {keepDefault:false, openWith: "\n\n"},
+                    markupSet: [
+                        {name:'{{ 'markitup.lvl_head_1'|trans() }}', key:'1', placeHolder:'{{ 'markitup.your_title_here'|trans() }}', closeWith:function(markItUp) { return miu.markdownTitle(markItUp, '=') } },
+                        {name:'{{ 'markitup.lvl_head_2'|trans() }}', key:'2', placeHolder:'{{ 'markitup.your_title_here'|trans() }}', closeWith:function(markItUp) { return miu.markdownTitle(markItUp, '-') } },
+                        {name:'{{ 'markitup.lvl_head_3'|trans() }}', key:'3', openWith:'### ', placeHolder:'{{ 'markitup.your_title_here'|trans() }}' },
+                        {name:'{{ 'markitup.lvl_head_4'|trans() }}', key:'4', openWith:'#### ', placeHolder:'{{ 'markitup.your_title_here'|trans() }}' },
+                        {name:'{{ 'markitup.lvl_head_5'|trans() }}', key:'5', openWith:'##### ', placeHolder:'{{ 'markitup.your_title_here'|trans() }}' },
+                        {name:'{{ 'markitup.lvl_head_6'|trans() }}', key:'6', openWith:'###### ', placeHolder:'{{ 'markitup.your_title_here'|trans() }}' },
+                        {separator:'---------------' },
+                        {name:'{{ 'markitup.bold'|trans() }}', key:'B', openWith:'**', closeWith:'**'},
+                        {name:'{{ 'markitup.italic'|trans() }}', key:'I', openWith:'_', closeWith:'_'},
+                        {separator:'---------------' },
+                        {name:'{{ 'markitup.bulleted_list'|trans() }}', openWith:'- ' },
+                        {name:'{{ 'markitup.numeric_list'|trans() }}', openWith:function(markItUp) {
+                            return markItUp.line+'. ';
+                        }},
+                        {separator:'---------------' },
+                        {name:'{{ 'markitup.picture'|trans() }}', key:'P', replaceWith:'![[![Alternative text]!]]([![Url:!:http://]!] "[![Title]!]")'},
+                        {name:'{{ 'markitup.link'|trans() }}', key:'L', openWith:'[', closeWith:']([![Url:!:http://]!] "[![Title]!]")', placeHolder:'{{ 'markitup.your_text_to_link'|trans() }}' },
+                        {separator:'---------------'},
+                        {name:'{{ 'markitup.quotes'|trans() }}', openWith:'> '},
+                        {name:'{{ 'markitup.code_block'|trans() }}', openWith:'(!(\t|!|`)!)', closeWith:'(!(`)!)'},
+                        {separator:'---------------'},
+                        {name:'{{ 'markitup.preview'|trans() }}', call:'preview', className:"preview"}
+                    ]
+                };
+
+                $('#{{ id }}').markItUp($.extend(
+                    markItUpDefaultSettings,
+                    {{ json|default('{}')|raw }}
+                ));
+            });
+        })(jQuery);
+    </script>
+    {% endspaceless %}
+{% endblock %}

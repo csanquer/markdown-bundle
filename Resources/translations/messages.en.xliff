@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>markitup.lvl_head_1</source>
+                <target>First Level Heading</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>markitup.lvl_head_2</source>
+                <target>Second Level Heading</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>markitup.lvl_head_3</source>
+                <target>Heading 3</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>markitup.lvl_head_4</source>
+                <target>Heading 4</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>markitup.lvl_head_5</source>
+                <target>Heading 5</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>markitup.lvl_head_6</source>
+                <target>Heading 6</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>markitup.your_title_here</source>
+                <target>Your title here...</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>markitup.bold</source>
+                <target>Bold</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>markitup.italic</source>
+                <target>Italic</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>markitup.bulleted_list</source>
+                <target>Bulleted List</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>markitup.numeric_list</source>
+                <target>Numeric List</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>markitup.picture</source>
+                <target>Picture</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>markitup.link</source>
+                <target>Link</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>markitup.your_text_to_link</source>
+                <target>Your text to link ...</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>markitup.quotes</source>
+                <target>Quotes</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>markitup.code_block</source>
+                <target>Code Block / Code</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>markitup.preview</source>
+                <target>Preview</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
